@@ -1,0 +1,113 @@
+@use "../main" as *;
+
+.footer {
+  background-color: $bg-dark;
+  color: $text-light;
+  padding: 3rem 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .footer-description {
+    max-width: 400px;
+
+    @media (max-width: $tablet) {
+      max-width: 100%;
+    }
+
+    p {
+      color: rgba($text-light, 0.8);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+
+    @media (max-width: $tablet) {
+      justify-content: center;
+    }
+
+    a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba($text-light, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      svg {
+        color: $text-light;
+        font-size: 1.1rem;
+      }
+
+      &:hover {
+        background: $primary-color;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    a {
+      color: rgba($text-light, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    a,
+    span {
+      color: rgba($text-light, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: $primary-color;
+    }
+  }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba($text-light, 0.1);
+    text-align: center;
+
+    p {
+      color: rgba($text-light, 0.6);
+      font-size: 0.9rem;
+    }
+  }
+}

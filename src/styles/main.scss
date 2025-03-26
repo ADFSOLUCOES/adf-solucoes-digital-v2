@@ -1,0 +1,261 @@
+@use "sass:color";
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor:wght@300;400;500;600;700&display=swap");
+
+// Cores
+$bg-dark: #070d18;
+$bg-light: #fff;
+$bg-gray: #f5f5f5;
+$bg-section-sobre: #070d18;
+$bg-neutral: #ccc;
+
+$text-dark: #000;
+$text-light: #fff;
+
+$primary-color: #00879f;
+$primary-hover: color.adjust($primary-color, $lightness: -5%);
+
+// Fontes
+$font-primary: "Wix Madefor", sans-serif;
+$font-heading: "Wix Madefor", sans-serif;
+
+// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large: 1200px;
+
+// Variáveis comuns
+$white: $bg-light;
+$text-color: $text-dark;
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-primary;
+}
+
+body {
+  font-family: $font-primary;
+  line-height: 1.5;
+  color: $text-dark;
+  background-color: $bg-light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 4rem 0;
+
+  @media (max-width: $tablet) {
+    padding: 3rem 0;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 2rem 0;
+  }
+
+  &-title {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2.5rem;
+      color: $text-dark;
+      margin-bottom: 0.75rem;
+
+      @media (max-width: $mobile) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: rgba($text-dark, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+
+      @media (max-width: $mobile) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Utilitários
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+.mb-4 {
+  margin-bottom: 2rem;
+}
+.mb-5 {
+  margin-bottom: 2.5rem;
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &-primary {
+    background-color: $primary-color;
+    color: $text-light;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -5%);
+    }
+  }
+
+  &-secondary {
+    background-color: $primary-color;
+    color: $text-light;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -5%);
+    }
+  }
+
+  &-outline {
+    border: 2px solid $primary-color;
+    color: $primary-color;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $text-light;
+    }
+  }
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: $text-dark;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: $text-dark;
+}
+
+// Utilities
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+.mt-4 {
+  margin-top: 2rem;
+}
+.mt-5 {
+  margin-top: 2.5rem;
+}
+
+.py-1 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.py-2 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.py-3 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.py-4 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.py-5 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.px-1 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.px-2 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-3 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.px-4 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.px-5 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+// Mixins
+@mixin hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin responsive-padding {
+  padding: 4rem 0;
+
+  @media (max-width: $tablet) {
+    padding: 3rem 0;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 2rem 0;
+  }
+}

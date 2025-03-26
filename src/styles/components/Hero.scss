@@ -1,0 +1,260 @@
+@use "sass:color";
+@use "../main" as *;
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 65px);
+  overflow: hidden;
+  background-color: $bg-light;
+  margin-top: 65px;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 65px);
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+.hero-content {
+  flex: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba($primary-color, 0.1);
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+
+    span {
+      color: $primary-color;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: $text-dark;
+    font-weight: 700;
+
+    @media (max-width: $mobile) {
+      font-size: 2rem;
+    }
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: rgba($text-dark, 0.7);
+    margin-bottom: 1rem;
+    max-width: 600px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    @media (max-width: $tablet) {
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: $primary-color;
+      color: $text-light;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      svg {
+        font-size: 1.1rem;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background: color.adjust($primary-color, $lightness: -5%);
+        transform: translateY(-2px);
+
+        svg {
+          transform: translateX(4px);
+        }
+      }
+    }
+
+    .btn-outline {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $primary-color;
+        color: $text-light;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.hero-features {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: $tablet) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba($bg-light, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    svg {
+      color: $primary-color;
+      font-size: 1rem;
+    }
+
+    span {
+      font-weight: 500;
+      color: rgba($text-dark, 0.7);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.hero-visual {
+  flex: 1;
+  position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.6s ease-out;
+  transition-delay: 0.3s;
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-cards {
+  position: absolute;
+  top: -30px;
+  right: -15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  z-index: 2;
+
+  .tech-card {
+    background: $bg-light;
+    padding: 0.75rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    span {
+      font-weight: 600;
+      color: $text-dark;
+    }
+
+    .card-icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+.hero-illustration {
+  background: $bg-light;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-top: 60px;
+
+  .code-window {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .window-header {
+      background: #2d2d2d;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .window-content {
+      padding: 1rem;
+
+      pre code {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-visual {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-cards {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 1.5rem;
+  }
+}

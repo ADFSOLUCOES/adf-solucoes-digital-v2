@@ -1,0 +1,257 @@
+@use "../main" as *;
+
+.about {
+  padding: 4rem 0;
+  background-color: $bg-gray;
+  overflow: hidden;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .about-text {
+    h2 {
+      font-size: 2.5rem;
+      color: $text-dark;
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: $primary-color;
+        border-radius: 2px;
+      }
+
+      @media (max-width: $mobile) {
+        font-size: 2rem;
+      }
+    }
+
+    .about-description {
+      font-size: 1.1rem;
+      color: rgba($text-dark, 0.8);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: $bg-light;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+        .icon {
+          background: $primary-color;
+
+          svg {
+            color: $text-light;
+          }
+        }
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        background: rgba($primary-color, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+
+        svg {
+          color: $primary-color;
+          font-size: 1.25rem;
+        }
+      }
+
+      .text {
+        h4 {
+          font-size: 1.1rem;
+          color: $text-dark;
+          margin-bottom: 0.25rem;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: rgba($text-dark, 0.7);
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
+
+    .value-item {
+      background: $bg-light;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      text-align: center;
+
+      h3 {
+        font-size: 1.5rem;
+        color: $text-dark;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .icon {
+        width: 64px;
+        height: 64px;
+        background: rgba($primary-color, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+
+        svg {
+          color: $primary-color;
+          font-size: 1.75rem;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        color: rgba($text-dark, 0.8);
+        line-height: 1.5;
+        margin: 0;
+      }
+    }
+  }
+
+  .about-image {
+    position: relative;
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .experience-badge {
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      background: $primary-color;
+      color: $text-light;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba($primary-color, 0.3);
+      text-align: center;
+
+      @media (max-width: $tablet) {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin: -50px auto 0;
+        width: fit-content;
+      }
+
+      h3 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+
+        span {
+          font-size: 1.2rem;
+          margin-left: 0.25rem;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: 3rem 0;
+
+    .about-text {
+      text-align: center;
+
+      h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .about-features {
+      .feature {
+        justify-content: center;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: $desktop) {
+  .about {
+    &-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    &-image {
+      height: 300px;
+      order: -1;
+    }
+  }
+}
