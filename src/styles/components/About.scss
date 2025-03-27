@@ -52,6 +52,7 @@
       color: rgba($text-dark, 0.8);
       line-height: 1.5;
       margin-bottom: 2rem;
+      text-align: left;
     }
   }
 
@@ -75,6 +76,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
       transition: transform 0.3s ease;
+      margin-bottom: 1rem;
 
       &:hover {
         transform: translateY(-5px);
@@ -92,6 +94,7 @@
       .icon {
         width: 48px;
         height: 48px;
+        min-width: 48px;
         background: rgba($primary-color, 0.1);
         border-radius: 12px;
         display: flex;
@@ -99,24 +102,46 @@
         justify-content: center;
         transition: all 0.3s ease;
 
+        @media (max-width: $mobile) {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+        }
+
         svg {
           color: $primary-color;
           font-size: 1.25rem;
+
+          @media (max-width: $mobile) {
+            font-size: 1rem;
+          }
         }
       }
 
       .text {
+        flex: 1;
+
         h4 {
           font-size: 1.1rem;
           color: $text-dark;
           margin-bottom: 0.25rem;
           font-weight: 600;
+          text-align: left;
+
+          @media (max-width: $mobile) {
+            font-size: 1rem;
+          }
         }
 
         p {
-          font-size: 0.9rem;
-          color: rgba($text-dark, 0.7);
+          font-size: 1rem;
+          color: rgba($text-dark, 0.8);
           margin: 0;
+          text-align: left;
+
+          @media (max-width: $mobile) {
+            font-size: 0.9rem;
+          }
         }
       }
     }
@@ -222,18 +247,16 @@
     padding: 3rem 0;
 
     .about-text {
-      text-align: center;
+      text-align: left;
 
       h2:after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        transform: none;
       }
     }
 
-    .about-features {
-      .feature {
-        justify-content: center;
-      }
+    .feature {
+      justify-content: flex-start;
     }
   }
 

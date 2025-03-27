@@ -1,15 +1,33 @@
-import { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faPhone,
   faLocationDot,
-  faPaperPlane,
+  faArrowRight,
+  faSpinner,
+  faCheck,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/components/Contact.scss";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
+
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -18,76 +36,102 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
+    null
+  );
+  const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Nome é obrigatório";
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email é obrigatório";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Email inválido";
+      isValid = false;
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Telefone é obrigatório";
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Mensagem é obrigatória";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setStatus({ type: null, message: "" });
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
     try {
-      const form = e.target as HTMLFormElement;
-      const formData = new FormData(form);
-
-      const response = await fetch(
-        "https://formsubmit.co/contato@adfsolucoes.com",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (response.ok) {
-        setStatus({
-          type: "success",
-          message:
-            "Mensagem enviada com sucesso! Entraremos em contato em breve.",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          message: "",
-        });
-        form.reset();
-      } else {
-        throw new Error("Falha ao enviar mensagem");
-      }
-    } catch (err) {
-      console.error("Erro ao enviar mensagem:", err);
-      setStatus({
-        type: "error",
-        message: "Erro ao enviar mensagem. Por favor, tente novamente.",
+      const response = await fetch("http://localhost:3001/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar mensagem");
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Erro:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
   return (
-    <section id="contato" className="contact">
+    <section className="contact" id="contact">
       <div className="container">
         <div className="contact-content">
           <h2>Solicite um Orçamento</h2>
           <p>
-            Estamos prontos para ajudar você a transformar seu negócio digital.
-            Preencha o formulário e entraremos em contato em breve.
+            Entre em contato conosco para discutir seu projeto. Nossa equipe
+            está pronta para ajudar a transformar suas ideias em realidade.
           </p>
-
           <div className="contact-info">
             <div className="info-item">
               <div className="icon">
@@ -98,47 +142,38 @@ const Contact = () => {
                 <p>contato@adfsolucoes.com</p>
               </div>
             </div>
-
             <div className="info-item">
               <div className="icon">
                 <FontAwesomeIcon icon={faPhone} />
               </div>
               <div className="text">
                 <h4>Telefone</h4>
-                <p>+55 (11) 9999-9999</p>
+                <p>(11) 99999-9999</p>
               </div>
             </div>
-
             <div className="info-item">
               <div className="icon">
                 <FontAwesomeIcon icon={faLocationDot} />
               </div>
               <div className="text">
                 <h4>Endereço</h4>
-                <p>São Paulo, SP</p>
+                <p>São Paulo, SP - Brasil</p>
               </div>
             </div>
           </div>
         </div>
 
-        <form
-          action="https://formsubmit.co/contato@adfsolucoes.com"
-          method="POST"
-          onSubmit={handleSubmit}
-          className="contact-form"
-        >
-          <input
-            type="hidden"
-            name="_subject"
-            value="Novo contato - ADF Soluções"
-          />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value={window.location.href} />
-
-          {status.type && (
-            <div className={`form-message ${status.type}`}>
-              {status.message}
+        <form className="contact-form" onSubmit={handleSubmit}>
+          {submitStatus && (
+            <div className={`form-message ${submitStatus}`}>
+              <FontAwesomeIcon
+                icon={
+                  submitStatus === "success" ? faCheck : faExclamationTriangle
+                }
+              />
+              {submitStatus === "success"
+                ? "Mensagem enviada com sucesso! Entraremos em contato em breve."
+                : "Erro ao enviar mensagem. Por favor, tente novamente."}
             </div>
           )}
 
@@ -149,21 +184,27 @@ const Contact = () => {
               placeholder="Nome completo"
               value={formData.name}
               onChange={handleChange}
-              required
+              className={errors.name ? "error" : ""}
               disabled={isSubmitting}
             />
+            {errors.name && (
+              <span className="error-message">{errors.name}</span>
+            )}
           </div>
 
           <div className="form-group">
             <input
               type="email"
               name="email"
-              placeholder="E-mail"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              required
+              className={errors.email ? "error" : ""}
               disabled={isSubmitting}
             />
+            {errors.email && (
+              <span className="error-message">{errors.email}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -173,19 +214,21 @@ const Contact = () => {
               placeholder="Telefone"
               value={formData.phone}
               onChange={handleChange}
-              required
+              className={errors.phone ? "error" : ""}
               disabled={isSubmitting}
             />
+            {errors.phone && (
+              <span className="error-message">{errors.phone}</span>
+            )}
           </div>
 
           <div className="form-group">
             <input
               type="text"
               name="company"
-              placeholder="Empresa"
+              placeholder="Empresa (opcional)"
               value={formData.company}
               onChange={handleChange}
-              required
               disabled={isSubmitting}
             />
           </div>
@@ -193,18 +236,30 @@ const Contact = () => {
           <div className="form-group">
             <textarea
               name="message"
-              placeholder="Mensagem"
+              placeholder="Sua mensagem"
               value={formData.message}
               onChange={handleChange}
-              required
+              className={errors.message ? "error" : ""}
               disabled={isSubmitting}
             />
+            {errors.message && (
+              <span className="error-message">{errors.message}</span>
+            )}
           </div>
 
           <div className="form-submit">
             <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-              <FontAwesomeIcon icon={faPaperPlane} />
+              {isSubmitting ? (
+                <>
+                  <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
+                  Enviando...
+                </>
+              ) : (
+                <>
+                  Enviar mensagem
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </>
+              )}
             </button>
           </div>
         </form>

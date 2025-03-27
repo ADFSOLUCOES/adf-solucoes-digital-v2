@@ -1,0 +1,154 @@
+@use "../main" as *;
+
+.budget-section {
+  padding: 6rem 0;
+  background: var(--bg-gray);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+
+    h2 {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: var(--text-dark);
+      opacity: 0.8;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.budget-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg-light);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+
+  .form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--shadow-color);
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid var(--shadow-color);
+      border-radius: 8px;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(var(--primary), 0.1);
+      }
+
+      &::placeholder {
+        color: var(--text-dark);
+        opacity: 0.5;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .feature-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--primary);
+    }
+
+    span {
+      color: var(--text-dark);
+      font-size: 0.9375rem;
+    }
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      filter: brightness(110%);
+      transform: translateY(-2px);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px var(--shadow-color);
+    }
+  }
+}

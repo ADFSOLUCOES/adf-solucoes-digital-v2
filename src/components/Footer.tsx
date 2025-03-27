@@ -1,7 +1,9 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebook,
-  faLinkedin,
+  faFacebookF,
+  faLinkedinIn,
   faInstagram,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
@@ -10,49 +12,77 @@ import "../styles/components/Footer.scss";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="footer-container">
         <div className="footer-content">
-          <div className="footer-description">
-            <p>
+          <div className="footer-info">
+            <Link to="/" className="footer-logo">
+              <img src="/images/logo.png" alt="ADF Soluções" />
+            </Link>
+            <p className="footer-description">
               Transformando negócios através de soluções digitais inovadoras.
               Especialistas em desenvolvimento de e-commerce de alto impacto.
             </p>
-            <div className="social-links">
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faFacebook} />
+            <div className="footer-social">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faFacebookF} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedin} />
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
             </div>
           </div>
 
           <nav className="footer-nav">
-            <a href="#servicos">Serviços</a>
-            <a href="#tecnologias">Tecnologias</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#cases">Cases</a>
-            <a href="#contato">Contato</a>
+            <ul>
+              <li>
+                <Link to="/servicos">Serviços</Link>
+              </li>
+              <li>
+                <Link to="/tecnologias">Tecnologias</Link>
+              </li>
+              <li>
+                <Link to="/sobre">Sobre</Link>
+              </li>
+              <li>
+                <Link to="/cases">Cases</Link>
+              </li>
+              <li>
+                <Link to="/contato">Contato</Link>
+              </li>
+            </ul>
           </nav>
 
           <div className="footer-contact">
             <a href="mailto:contato@adfsolucoes.com">contato@adfsolucoes.com</a>
             <a href="tel:+551199999999">+55 (11) 9999-9999</a>
-            <span>São Paulo, SP</span>
+            <p>São Paulo, SP</p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>
-            &copy; {new Date().getFullYear()} ADF Soluções. Todos os direitos
-            reservados.
-          </p>
+          <p>© 2025 ADF Soluções. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

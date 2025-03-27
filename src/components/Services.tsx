@@ -26,12 +26,6 @@ const services = [
     description:
       "Melhorias contínuas para garantir velocidade e eficiência em sua loja virtual.",
   },
-  {
-    icon: faHeadset,
-    title: "Suporte Técnico",
-    description:
-      "Assistência especializada para manter sua loja sempre funcionando em perfeitas condições.",
-  },
 ];
 
 const Services = () => {

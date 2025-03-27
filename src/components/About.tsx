@@ -95,15 +95,15 @@ const About = () => {
 
           <div className="about-image">
             <img
-              src="/images/about-image.jpg"
+              src="/images/sobre-nos.png"
               alt="ADF Soluções - Desenvolvimento de E-commerce"
             />
-            <div className="experience-badge">
+            {/* <div className="experience-badge">
               <h3>
                 5+<span>anos</span>
               </h3>
               <p>de experiência em e-commerce</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

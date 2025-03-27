@@ -1,33 +1,46 @@
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./styles/main.scss";
 
-// Components
+import { ThemeProvider } from "./contexts/ThemeContext";
+
+// Componentes
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Cases from "./components/Cases";
+import About from "./components/About";
 import Services from "./components/Services";
 import Technologies from "./components/Technologies";
-import About from "./components/About";
-import Cases from "./components/Cases";
+import Blog from "./components/Blog";
+import Newsletter from "./components/Newsletter";
+import BudgetForm from "./components/BudgetForm";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main>
-          <Hero />
-          <Services />
-          <Technologies />
-          <About />
-          <Cases />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="app">
+          <ScrollToTop />
+          <Header />
+          <main>
+            <Hero />
+            <Cases />
+            <About />
+            <Services />
+            <Technologies />
+            <Blog />
+            <Newsletter />
+
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

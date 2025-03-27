@@ -1,49 +1,55 @@
 @use "../main" as *;
 
 .footer {
-  background-color: $bg-dark;
+  background: $bg-dark;
   color: $text-light;
-  padding: 3rem 0;
+  padding: 4rem 0 2rem;
 
-  .container {
+  &-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
 
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
+  &-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
 
     @media (max-width: $tablet) {
-      flex-direction: column;
-      text-align: center;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 
-  .footer-description {
-    max-width: 400px;
+  &-info {
+    .footer-logo {
+      display: block;
+      margin-bottom: 1.5rem;
 
-    @media (max-width: $tablet) {
-      max-width: 100%;
+      img {
+        height: 60px;
+        width: auto;
+      }
     }
 
-    p {
+    .footer-description {
+      font-size: 1rem;
+      line-height: 1.6;
       color: rgba($text-light, 0.8);
-      margin-bottom: 1.25rem;
-      line-height: 1.5;
+      margin-bottom: 1.5rem;
     }
   }
 
-  .social-links {
+  &-social {
     display: flex;
     gap: 1rem;
-
-    @media (max-width: $tablet) {
-      justify-content: center;
-    }
 
     a {
       width: 36px;
@@ -53,12 +59,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: $text-light;
       transition: all 0.3s ease;
-
-      svg {
-        color: $text-light;
-        font-size: 1.1rem;
-      }
 
       &:hover {
         background: $primary-color;
@@ -67,15 +69,40 @@
     }
   }
 
-  .footer-nav {
+  &-nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 1rem;
+
+        a {
+          color: rgba($text-light, 0.8);
+          text-decoration: none;
+          transition: all 0.3s ease;
+          font-size: 1rem;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  &-contact {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 
-    a {
+    a,
+    p {
       color: rgba($text-light, 0.8);
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      font-size: 1rem;
 
       &:hover {
         color: $primary-color;
@@ -83,31 +110,14 @@
     }
   }
 
-  .footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-
-    a,
-    span {
-      color: rgba($text-light, 0.8);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: $primary-color;
-    }
-  }
-
-  .footer-bottom {
-    padding-top: 1.5rem;
+  &-bottom {
+    padding-top: 2rem;
     border-top: 1px solid rgba($text-light, 0.1);
     text-align: center;
 
     p {
       color: rgba($text-light, 0.6);
-      font-size: 0.9rem;
+      font-size: 0.875rem;
     }
   }
 }

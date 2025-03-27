@@ -6,20 +6,24 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // Origem do seu frontend
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 app.use(express.json());
 
-// Configuração do transporter do nodemailer
-let transporter = nodemailer.createTransport({
-  service: 'gmail',
+const PORT = process.env.PORT || 3001;
+
+// Configuração do transporter do nodemailer usando Resend
+const transporter = nodemailer.createTransport({
+  host: 'smtp.resend.com',
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  },
-  debug: true, // Ativa logs detalhados
-  logger: true // Ativa logger
+    user: 'resend',
+    pass: process.env.RESEND_API_KEY
+  }
 });
 
 // Verificar conexão com o servidor de email
@@ -28,89 +32,67 @@ transporter.verify((error, success) => {
     console.error("Erro na verificação do servidor de email:", error);
   } else {
     console.log("Servidor de email pronto!");
-    // Mostrar as configurações (sem senha)
-    console.log("Configurações do email:", {
-      user: process.env.EMAIL_USER,
-      service: 'gmail'
-    });
   }
 });
 
 // Rota para testar o servidor
 app.get('/api/test', (req, res) => {
-  res.json({ 
-    message: 'Servidor funcionando!',
-    emailConfig: {
-      user: process.env.EMAIL_USER,
-      service: 'gmail'
-    }
-  });
+  res.json({ message: 'Servidor funcionando!' });
 });
 
 // Rota para enviar email
-app.post('/api/send-email', async (req, res) => {
-  console.log("Recebendo requisição de email:", {
-    body: req.body,
-    headers: req.headers
-  });
-
-  const { name, email, phone, company, message } = req.body;
-
-  if (!name || !email || !message) {
-    return res.status(400).json({ 
-      success: false, 
-      error: 'Por favor, preencha todos os campos obrigatórios' 
-    });
-  }
-
+app.post('/send-email', async (req, res) => {
   try {
-    console.log("Tentando enviar email...");
-    
+    const { name, email, phone, company, message } = req.body;
+
     const mailOptions = {
-      from: `"ADF Soluções Website" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `Novo contato de ${name} - ADF Soluções`,
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_TO,
+      subject: `Novo contato de ${name}`,
       html: `
-        <h2>Novo contato do website</h2>
-        <p><strong>Nome:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Telefone:</strong> ${phone}</p>
-        <p><strong>Empresa:</strong> ${company}</p>
-        <p><strong>Mensagem:</strong></p>
-        <p>${message}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 10px;">Novo contato recebido</h2>
+          
+          <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 10px 0;"><strong style="color: #0066cc;">Nome:</strong> ${name}</p>
+            <p style="margin: 10px 0;"><strong style="color: #0066cc;">Email:</strong> ${email}</p>
+            <p style="margin: 10px 0;"><strong style="color: #0066cc;">Telefone:</strong> ${phone}</p>
+            ${company ? `<p style="margin: 10px 0;"><strong style="color: #0066cc;">Empresa:</strong> ${company}</p>` : ''}
+          </div>
+
+          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #333; margin-top: 0;">Mensagem:</h3>
+            <p style="line-height: 1.6;">${message}</p>
+          </div>
+          
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 12px;">
+            <p>Este email foi enviado através do formulário de contato do site.</p>
+          </div>
+        </div>
       `
     };
 
-    console.log("Opções do email:", mailOptions);
+    await transporter.sendMail(mailOptions);
 
-    const info = await transporter.sendMail(mailOptions);
-
-    console.log('Email enviado com sucesso:', info);
-    res.json({ 
+    res.status(200).json({ 
       success: true,
-      messageId: info.messageId 
+      message: 'Email enviado com sucesso!' 
     });
   } catch (error) {
-    console.error('Erro detalhado ao enviar email:', {
-      error: error.message,
-      stack: error.stack,
-      code: error.code,
-      command: error.command
-    });
-    
+    console.error('Erro ao enviar email:', error);
     res.status(500).json({ 
-      success: false, 
-      error: `Erro ao enviar mensagem: ${error.message}`,
-      details: {
-        code: error.code,
-        command: error.command
-      }
+      success: false,
+      error: 'Erro ao enviar email',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });
 
-const PORT = process.env.PORT || 3001;
+// Rota de verificação de saúde
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 }); 

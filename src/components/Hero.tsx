@@ -1,38 +1,39 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowRight,
-  faCode,
   faRocket,
-  faChartLine,
+  faCode,
+  faGaugeHigh,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/components/Hero.scss";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section className="hero">
+    <section className="hero" id="home">
       <div className="hero-background">
         <div className="hero-pattern"></div>
         <div className="hero-gradient"></div>
       </div>
-      <div className="container hero-container">
+      <div className="hero-container">
         <div className={`hero-content ${isVisible ? "visible" : ""}`}>
           <div className="hero-badge">
-            <span>Parceira VTEX</span>
+            <span>App Features</span>
           </div>
-          <h1>
-            Transforme seu negócio digital com{" "}
-            <span className="highlight">soluções de alto impacto</span>
-          </h1>
+          <h1>Transforme seu negócio digital com soluções de alto impacto</h1>
           <p>
-            Desenvolvimento de e-commerces especializado em performance,
-            conversão e experiência do usuário. Parceira VTEX, Wake e Deco.
+            Desenvolvimento web moderno, otimização de performance e estratégias
+            digitais personalizadas para impulsionar seu sucesso online.
           </p>
           <div className="hero-features">
             <div className="feature">
@@ -40,79 +41,63 @@ const Hero = () => {
               <span>Desenvolvimento Moderno</span>
             </div>
             <div className="feature">
-              <FontAwesomeIcon icon={faRocket} />
+              <FontAwesomeIcon icon={faGaugeHigh} />
               <span>Performance Otimizada</span>
             </div>
             <div className="feature">
-              <FontAwesomeIcon icon={faChartLine} />
+              <FontAwesomeIcon icon={faRocket} />
               <span>Alta Conversão</span>
             </div>
           </div>
           <div className="hero-cta">
-            <a href="#contato" className="btn btn-primary">
-              Fale com um especialista
-              <FontAwesomeIcon icon={faArrowRight} />
+            <a href="#contact" className="btn">
+              Solicite um Orçamento
+              <FontAwesomeIcon icon={faArrowRight} className="icon" />
             </a>
           </div>
         </div>
-        <div className={`hero-visual ${isVisible ? "visible" : ""}`}>
+        <div className="hero-visual">
           <div className="hero-cards">
             <div className="tech-card vtex">
-              <div className="card-icon">
-                <img src="/vtex-icon.svg" alt="VTEX" />
-              </div>
-              <span>VTEX</span>
+              <img src="/images/vtex.png" alt="VTEX" />
             </div>
             <div className="tech-card deco">
-              <div className="card-icon">
-                <img src="/deco-icon.svg" alt="Deco" />
-              </div>
-              <span>Deco</span>
-            </div>
-            <div className="tech-card react">
-              <div className="card-icon">
-                <FontAwesomeIcon icon={faCode} />
-              </div>
-              <span>React</span>
+              <img src="/images/deco.cx.webp" alt="Deco.cx" />
             </div>
           </div>
           <div className="hero-illustration">
-            <div className="illustration-wrapper">
-              <div className="code-window">
-                <div className="window-header">
-                  <div className="window-buttons">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div className="window-title">main.tsx</div>
-                </div>
-                <div className="window-content">
-                  <pre>
-                    <code>
-                      <span className="code-comment">
-                        {"// Transformando ideias em código"}
-                      </span>
-                      {"\n"}
-                      <span className="code-keyword">{"const"}</span>{" "}
-                      <span className="code-function">{"createEcommerce"}</span>
-                      {" = () => {\n"}
-                      {"  "}
-                      <span className="code-keyword">{"return"}</span>
-                      {" {\n"}
-                      {"    "}performance:{" "}
-                      <span className="code-string">{'"otimizada"'}</span>,
-                      {"\n"}
-                      {"    "}design:{" "}
-                      <span className="code-string">{'"moderno"'}</span>,{"\n"}
-                      {"    "}conversao:{" "}
-                      <span className="code-string">{'"maximizada"'}</span>
-                      {"\n"}
-                      {"  }\n"}
-                      {"}"};
-                    </code>
-                  </pre>
-                </div>
+            <div className="code-window">
+              <div className="code-header">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+              </div>
+              <div className="code-content">
+                <pre>
+                  <code>
+                    <span className="comment">
+                      // Transformando ideias em realidade
+                    </span>
+                    <br />
+                    <span className="keyword">const</span>{" "}
+                    <span className="variable">success</span>{" "}
+                    <span className="operator">=</span>{" "}
+                    <span className="keyword">async</span> () {"=> {"}
+                    <br />
+                    {"  "}
+                    <span className="keyword">await</span>{" "}
+                    <span className="function">transform</span>({"{"}
+                    <br />
+                    {"    "}idea: <span className="string">"seu negócio"</span>,
+                    <br />
+                    {"    "}into:{" "}
+                    <span className="string">"sucesso digital"</span>
+                    <br />
+                    {"  }"});
+                    <br />
+                    {"}"};
+                  </code>
+                </pre>
               </div>
             </div>
           </div>
