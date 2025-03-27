@@ -14,6 +14,7 @@ import Blog from "./components/Blog";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import Contact from "./components/Contact";
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC = () => {
             <Cases />
             <Blog />
             <Newsletter />
+            <Contact />
           </main>
           <Footer />
         </div>
