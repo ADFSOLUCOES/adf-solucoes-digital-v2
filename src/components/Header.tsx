@@ -10,9 +10,11 @@ import {
 import { useTheme } from "../contexts/ThemeContext";
 import "../styles/components/Header.scss";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+interface HeaderProps {}
+
+const Header: React.FC<HeaderProps> = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -57,13 +59,13 @@ const Header = () => {
         </nav>
 
         <div className="header-actions">
-          {/* <button
+          <button
             className="theme-toggle"
             onClick={toggleTheme}
             aria-label={isDarkMode ? "Ativar modo claro" : "Ativar modo escuro"}
           >
             <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-          </button> */}
+          </button>
           <Link to="/contato" className="contact-btn">
             Fale Conosco
           </Link>

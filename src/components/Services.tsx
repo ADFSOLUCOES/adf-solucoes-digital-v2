@@ -1,38 +1,42 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCode,
-  faMobileAlt,
+  faShoppingCart,
   faChartLine,
-  faHeadset,
+  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/components/Services.scss";
 
-const services = [
+interface Service {
+  icon: IconDefinition;
+  title: string;
+  description: string;
+}
+
+const services: Service[] = [
   {
     icon: faCode,
-    title: "Desenvolvimento de E-commerce",
-    description:
-      "Criação de lojas virtuais personalizadas com foco em performance e experiência do usuário.",
+    title: "Desenvolvimento Web",
+    description: "Criamos sites e aplicações web modernas e responsivas",
   },
   {
-    icon: faMobileAlt,
-    title: "Responsividade",
-    description:
-      "Soluções totalmente adaptáveis para todos os dispositivos e plataformas.",
+    icon: faShoppingCart,
+    title: "E-commerce",
+    description: "Implementamos soluções completas de comércio eletrônico",
   },
   {
     icon: faChartLine,
-    title: "Otimização de Performance",
-    description:
-      "Melhorias contínuas para garantir velocidade e eficiência em sua loja virtual.",
+    title: "Marketing Digital",
+    description: "Estratégias para aumentar sua presença online",
   },
 ];
 
-const Services = () => {
+const Services: React.FC = () => {
   return (
-    <section id="servicos" className="section services">
+    <section id="servicos" className="services">
       <div className="container">
-        <h2 className="section-title">Nossos Serviços</h2>
+        <h2>Nossos Serviços</h2>
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="service-card">
