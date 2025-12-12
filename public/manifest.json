@@ -1,11 +1,11 @@
 {
-  "name": "ADF Soluções",
-  "short_name": "ADF",
-  "description": "Transforme seu negócio digital com soluções de alto impacto",
+  "name": "ADF Soluções Digital - Desenvolvimento Web e E-commerce",
+  "short_name": "ADF Soluções",
+  "description": "Especialistas em desenvolvimento web, e-commerce VTEX e Deco.cx em São Paulo",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0066cc",
+  "theme_color": "#00879f",
   "icons": [
     {
       "src": "/icon-192x192.png",

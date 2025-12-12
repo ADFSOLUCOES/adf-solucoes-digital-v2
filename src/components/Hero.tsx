@@ -28,32 +28,39 @@ const Hero: React.FC = () => {
       <div className="hero-container">
         <div className={`hero-content ${isVisible ? "visible" : ""}`}>
           <div className="hero-badge">
-            <span>App Features</span>
+            <span>🚀 Especializado em E‑commerce & Soluções Web Sob Medida</span>
           </div>
-          <h1>Transforme seu negócio digital com soluções de alto impacto</h1>
-          <p>
-            Desenvolvimento web moderno, otimização de performance e estratégias
-            digitais personalizadas para impulsionar seu sucesso online.
+          <h1>
+            Soluções Web e E‑commerce de Alta Performance para o Seu Negócio
+          </h1>
+          <p className="hero-subtitle">
+            Desenvolvemos e‑commerces, sites e sistemas sob medida, com foco em velocidade, estabilidade e experiência do usuário. Especializados em VTEX, Deco.cx e desenvolvimento web moderno, ajudamos sua empresa a construir uma presença digital sólida, eficiente e pronta para crescer.
           </p>
           <div className="hero-features">
             <div className="feature">
               <FontAwesomeIcon icon={faCode} />
-              <span>Desenvolvimento Moderno</span>
+              <span>E‑commerce, sites e sistemas sob medida</span>
             </div>
             <div className="feature">
               <FontAwesomeIcon icon={faGaugeHigh} />
-              <span>Performance Otimizada</span>
+              <span>Foco em performance, velocidade e experiência do usuário</span>
             </div>
             <div className="feature">
               <FontAwesomeIcon icon={faRocket} />
-              <span>Alta Conversão</span>
+              <span>Implementação profissional em VTEX e Deco.cx</span>
             </div>
           </div>
           <div className="hero-cta">
-            <a href="#contact" className="btn">
-              Solicite um Orçamento
-              <FontAwesomeIcon icon={faArrowRight} className="icon" />
+            <a href="#contact" className="btn btn-primary" aria-label="Solicitar orçamento gratuito">
+              Solicitar Orçamento Gratuito
+              <FontAwesomeIcon icon={faArrowRight} className="icon" aria-hidden="true" />
             </a>
+            <a href="#servicos" className="btn btn-secondary" aria-label="Ver serviços disponíveis">
+              Ver Serviços
+            </a>
+          </div>
+          <div className="hero-trust">
+            <p className="trust-text">Orçamento em até 24h • Sem compromisso • Consultoria inicial gratuita</p>
           </div>
         </div>
         <div className="hero-visual">
@@ -76,26 +83,33 @@ const Hero: React.FC = () => {
                 <pre>
                   <code>
                     <span className="comment">
-                      // Transformando ideias em realidade
+                      // Soluções digitais sob medida
                     </span>
                     <br />
+                    <span className="keyword">import</span>{" "}
+                    <span className="string">{"{ VTEX, Deco }"}</span>{" "}
+                    <span className="keyword">from</span>{" "}
+                    <span className="string">"@adfsolucoesdigital"</span>
+                    <br />
+                    <br />
                     <span className="keyword">const</span>{" "}
-                    <span className="variable">success</span>{" "}
+                    <span className="variable">projeto</span>{" "}
                     <span className="operator">=</span>{" "}
-                    <span className="keyword">async</span> () {"=> {"}
+                    <span className="function">desenvolver</span>({"{"}
                     <br />
                     {"  "}
-                    <span className="keyword">await</span>{" "}
-                    <span className="function">transform</span>({"{"}
+                    <span className="property">tipo</span>:{" "}
+                    <span className="string">"e-commerce | site | sistema"</span>,
                     <br />
-                    {"    "}idea: <span className="string">"seu negócio"</span>,
+                    {"  "}
+                    <span className="property">stack</span>:{" "}
+                    <span className="string">"[VTEX, Deco.cx]"</span>,
                     <br />
-                    {"    "}into:{" "}
-                    <span className="string">"sucesso digital"</span>
+                    {"  "}
+                    <span className="property">foco</span>:{" "}
+                    <span className="string">"performance & UX"</span>
                     <br />
-                    {"  }"});
-                    <br />
-                    {"}"};
+                    {"}"})
                   </code>
                 </pre>
               </div>

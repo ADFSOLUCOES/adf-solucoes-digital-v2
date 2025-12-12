@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="container">
         <Link to="/" className="logo" onClick={closeMenu}>
-          <img src="/logo.svg" alt="ADF Soluções" />
+          <img src="/logo.svg" alt="ADF Soluções Digital" />
         </Link>
 
         <button

@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../main" as *;
 
 .cases {
@@ -12,17 +13,39 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+  }
+
+  .cases-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba($primary-color, 0.1);
+      color: $primary-color;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
 
     h2 {
-      text-align: center;
       font-size: 2.5rem;
       color: $text-dark;
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
       font-weight: 700;
 
       @media (max-width: $tablet) {
         font-size: 2rem;
       }
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: rgba($text-dark, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
     }
   }
 
@@ -61,31 +84,68 @@
     }
   }
 
-  img {
-    width: 100%;
-    height: 360px;
-    object-fit: contain;
-    padding: 1rem;
-    background: #fff;
-    transition: transform 0.3s ease;
+  .case-image {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .case-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: 10%));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+    }
   }
 
   .case-content {
-    padding: 1.5rem;
+    padding: 2rem;
     background: $bg-light;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       color: $text-dark;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     p {
       font-size: 1rem;
       color: rgba($text-dark, 0.8);
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .case-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba($text-dark, 0.1);
+
+      .metric-tag {
+        background: rgba($primary-color, 0.1);
+        color: $primary-color;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
     }
   }
 

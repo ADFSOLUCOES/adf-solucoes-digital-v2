@@ -5,22 +5,28 @@ import case1 from "../../public/images/case1.png";
 
 const cases = [
   {
-    title: "E-commerce Enterprise",
+    title: "E-commerce Fashion - Moda Fashion",
+    result: "+250% em vendas",
     description:
-      "Desenvolvimento de uma plataforma completa para uma grande rede de varejo, com foco em performance e experiência do usuário.",
+      "Desenvolvimento completo em VTEX com foco em performance e UX. Resultado: aumento de 250% nas vendas em 3 meses e redução de 40% na taxa de rejeição.",
     image: case1,
+    metrics: ["+250% Vendas", "95 Performance", "40% Menos Rejeição"],
   },
   {
-    title: "Marketplace Digital",
+    title: "Marketplace TechStore",
+    result: "+180% conversão",
     description:
-      "Criação de um marketplace integrado com múltiplos vendedores e sistema de pagamentos avançado.",
+      "Plataforma marketplace integrada com múltiplos vendedores, sistema de pagamentos avançado e gestão automatizada. Aumento de 180% na taxa de conversão.",
     image: case1,
+    metrics: ["+180% Conversão", "50+ Vendedores", "99% Uptime"],
   },
   {
-    title: "Loja Virtual Personalizada",
+    title: "E-commerce EcoMarket",
+    result: "+320% ROI",
     description:
-      "Desenvolvimento de uma loja virtual sob medida para uma marca de moda, com recursos exclusivos de personalização.",
+      "Loja virtual personalizada com recursos exclusivos de personalização e integração completa com ERP. ROI de 320% no primeiro ano.",
     image: case1,
+    metrics: ["+320% ROI", "100% Integrado", "4.9 Avaliação"],
   },
 ];
 
@@ -28,34 +34,33 @@ const Cases = () => {
   return (
     <section className="cases" id="cases">
       <div className="cases-container">
-        <h2>Cases de Sucesso</h2>
+        <div className="cases-header">
+          <span className="section-badge">Cases de Sucesso</span>
+          <h2>Resultados Reais de Clientes Reais</h2>
+          <p className="section-subtitle">
+            Veja como transformamos e-commerces em máquinas de vendas
+          </p>
+        </div>
         <div className="cases-grid">
-          <div className="case-card">
-            <img src="/images/case1.png" alt="App Features" />
-            <div className="case-content">
-              <h3>App Features</h3>
-              <p>
-                Desenvolvimento de aplicativo com recursos avançados e interface
-                moderna
-              </p>
+          {cases.map((caseItem, index) => (
+            <div key={index} className="case-card">
+              <div className="case-image">
+                <img src="/images/case1.png" alt={caseItem.title} />
+                <div className="case-badge">{caseItem.result}</div>
+              </div>
+              <div className="case-content">
+                <h3>{caseItem.title}</h3>
+                <p>{caseItem.description}</p>
+                <div className="case-metrics">
+                  {caseItem.metrics.map((metric, idx) => (
+                    <span key={idx} className="metric-tag">
+                      {metric}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="case-card">
-            <img src="/images/case2.png" alt="Marketplace Digital" />
-            <div className="case-content">
-              <h3>Marketplace Digital</h3>
-              <p>
-                Plataforma integrada para vendas online com múltiplos vendedores
-              </p>
-            </div>
-          </div>
-          <div className="case-card">
-            <img src="/images/case1.png" alt="Loja Virtual Personalizada" />
-            <div className="case-content">
-              <h3>Loja Virtual Personalizada</h3>
-              <p>E-commerce personalizado com foco em experiência do usuário</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

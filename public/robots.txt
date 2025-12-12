@@ -1,0 +1,10 @@
+# robots.txt para ADF Soluções Digital
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://adfsolucoesdigital.com.br/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+

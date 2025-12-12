@@ -17,7 +17,7 @@ const About = () => {
           <div className="about-text">
             <h2>Sobre Nós</h2>
             <p className="about-description">
-              A ADF Soluções é uma empresa especializada em desenvolvimento de
+              A ADF Soluções Digital é uma empresa especializada em desenvolvimento de
               e-commerces de alto impacto, com foco em performance, conversão e
               experiência do usuário. Como parceira da VTEX, Wake e Deco,
               atuamos como o braço de tecnologia de empresas que desejam escalar
@@ -96,7 +96,7 @@ const About = () => {
           <div className="about-image">
             <img
               src="/images/sobre-nos.png"
-              alt="ADF Soluções - Desenvolvimento de E-commerce"
+              alt="ADF Soluções Digital - Desenvolvimento de E-commerce"
             />
             {/* <div className="experience-badge">
               <h3>

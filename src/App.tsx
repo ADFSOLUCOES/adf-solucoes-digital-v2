@@ -9,9 +9,6 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import Technologies from "./components/Technologies";
-import Cases from "./components/Cases";
-import Blog from "./components/Blog";
-import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Contact from "./components/Contact";
@@ -25,11 +22,13 @@ const App: React.FC = () => {
           <Header />
           <main>
             <Hero />
+            {/* <Stats /> */}
             <Services />
-            <Technologies />
-            <Cases />
-            <Blog />
-            <Newsletter />
+            {/* <Technologies /> */}
+            {/* <Cases /> */}
+            {/* <Testimonials /> */}
+            {/* <FAQ /> */}
+            {/* <Newsletter /> */}
             <Contact />
           </main>
           <Footer />

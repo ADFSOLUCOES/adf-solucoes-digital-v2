@@ -83,12 +83,19 @@ const Contact: React.FC = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("http://localhost:3001/send-email", {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("company", formData.company || "");
+      formDataToSend.append("message", formData.message);
+
+      const response = await fetch("https://formspree.io/f/mblblvwl", {
         method: "POST",
+        body: formDataToSend,
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -127,11 +134,27 @@ const Contact: React.FC = () => {
     <section className="contact" id="contact">
       <div className="container">
         <div className="contact-content">
-          <h2>Solicite um Orçamento</h2>
-          <p>
-            Entre em contato conosco para discutir seu projeto. Nossa equipe
-            está pronta para ajudar a transformar suas ideias em realidade.
+          <span className="section-badge">Contato</span>
+          <h2>Pronto para Desenvolver Seu Projeto Digital?</h2>
+          <p className="contact-subtitle">
+            Solicite um <strong>orçamento gratuito</strong> e sem compromisso. 
+            Respondemos em até <strong>24 horas</strong> para entender sua necessidade — 
+            seja site, sistema, e‑commerce, interface ou otimização de performance.
           </p>
+          <div className="contact-benefits">
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faCheck} />
+              <span>Retorno em até 24h</span>
+            </div>
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faCheck} />
+              <span>Sem compromisso</span>
+            </div>
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faCheck} />
+              <span>Consultoria inicial gratuita</span>
+            </div>
+          </div>
           <div className="contact-info">
             <div className="info-item">
               <div className="icon">
@@ -139,7 +162,7 @@ const Contact: React.FC = () => {
               </div>
               <div className="text">
                 <h4>Email</h4>
-                <p>contato@adfsolucoes.com</p>
+                <p>contato@adfsolucoesdigital.com</p>
               </div>
             </div>
             <div className="info-item">
@@ -178,53 +201,84 @@ const Contact: React.FC = () => {
           )}
 
           <div className="form-group">
+            <label htmlFor="name" className="sr-only">
+              Nome completo
+            </label>
             <input
               type="text"
+              id="name"
               name="name"
               placeholder="Nome completo"
               value={formData.name}
               onChange={handleChange}
               className={errors.name ? "error" : ""}
               disabled={isSubmitting}
+              aria-required="true"
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby={errors.name ? "name-error" : undefined}
             />
             {errors.name && (
-              <span className="error-message">{errors.name}</span>
+              <span id="name-error" className="error-message" role="alert">
+                {errors.name}
+              </span>
             )}
           </div>
 
           <div className="form-group">
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
             <input
               type="email"
+              id="email"
               name="email"
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               className={errors.email ? "error" : ""}
               disabled={isSubmitting}
+              aria-required="true"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
             />
             {errors.email && (
-              <span className="error-message">{errors.email}</span>
+              <span id="email-error" className="error-message" role="alert">
+                {errors.email}
+              </span>
             )}
           </div>
 
           <div className="form-group">
+            <label htmlFor="phone" className="sr-only">
+              Telefone
+            </label>
             <input
               type="tel"
+              id="phone"
               name="phone"
               placeholder="Telefone"
               value={formData.phone}
               onChange={handleChange}
               className={errors.phone ? "error" : ""}
               disabled={isSubmitting}
+              aria-required="true"
+              aria-invalid={errors.phone ? "true" : "false"}
+              aria-describedby={errors.phone ? "phone-error" : undefined}
             />
             {errors.phone && (
-              <span className="error-message">{errors.phone}</span>
+              <span id="phone-error" className="error-message" role="alert">
+                {errors.phone}
+              </span>
             )}
           </div>
 
           <div className="form-group">
+            <label htmlFor="company" className="sr-only">
+              Empresa (opcional)
+            </label>
             <input
               type="text"
+              id="company"
               name="company"
               placeholder="Empresa (opcional)"
               value={formData.company}
@@ -234,21 +288,30 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="form-group">
+            <label htmlFor="message" className="sr-only">
+              Sua mensagem
+            </label>
             <textarea
+              id="message"
               name="message"
               placeholder="Sua mensagem"
               value={formData.message}
               onChange={handleChange}
               className={errors.message ? "error" : ""}
               disabled={isSubmitting}
+              aria-required="true"
+              aria-invalid={errors.message ? "true" : "false"}
+              aria-describedby={errors.message ? "message-error" : undefined}
             />
             {errors.message && (
-              <span className="error-message">{errors.message}</span>
+              <span id="message-error" className="error-message" role="alert">
+                {errors.message}
+              </span>
             )}
           </div>
 
           <div className="form-submit">
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" disabled={isSubmitting} className="submit-btn">
               {isSubmitting ? (
                 <>
                   <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
@@ -256,11 +319,14 @@ const Contact: React.FC = () => {
                 </>
               ) : (
                 <>
-                  Enviar mensagem
+                  Solicitar Orçamento Gratuito
                   <FontAwesomeIcon icon={faArrowRight} />
                 </>
               )}
             </button>
+            <p className="form-note">
+              🔒 Seus dados estão seguros. Não enviamos spam.
+            </p>
           </div>
         </form>
       </div>

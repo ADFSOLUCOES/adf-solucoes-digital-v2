@@ -1,13 +1,18 @@
 {
   "name": "adf-solucoes",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Site da ADF Soluções Digital",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "vite",
+    "install-all": "npm install && cd server && npm install"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -31,6 +36,7 @@
     "globals": "^15.15.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "concurrently": "^8.2.0"
   }
 }

@@ -4,10 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faTimes,
-  faSun,
-  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
-import { useTheme } from "../contexts/ThemeContext";
 import "../styles/components/Header.scss";
 
 interface HeaderProps {}
@@ -15,7 +12,6 @@ interface HeaderProps {}
 const Header: React.FC<HeaderProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,41 +30,36 @@ const Header: React.FC<HeaderProps> = () => {
     <header className={`header ${isScrolled ? "scrolled" : ""}`}>
       <div className="header-container">
         <Link to="/" className="logo">
-          <img src="/images/logo.png" alt="ADF Soluções" />
+          <img src="/images/logo.png" alt="adfsolucoesdigital" />
         </Link>
 
-        <button className="mobile-menu-btn" onClick={toggleMenu}>
-          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+        <button 
+          className="mobile-menu-btn" 
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isMenuOpen}
+        >
+          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} aria-hidden="true" />
         </button>
 
         <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
           <ul className="nav-list">
             <li>
-              <Link to="/servicos">Serviços</Link>
+              <a href="#servicos" onClick={() => setIsMenuOpen(false)}>Serviços</a>
             </li>
             <li>
-              <Link to="/tecnologias">Tecnologias</Link>
+              <a href="#tecnologias" onClick={() => setIsMenuOpen(false)}>Tecnologias</a>
             </li>
             <li>
-              <Link to="/sobre">Sobre</Link>
-            </li>
-            <li>
-              <Link to="/cases">Cases</Link>
+              <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contato</a>
             </li>
           </ul>
         </nav>
 
         <div className="header-actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label={isDarkMode ? "Ativar modo claro" : "Ativar modo escuro"}
-          >
-            <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-          </button>
-          <Link to="/contato" className="contact-btn">
+          <a href="#contact" className="contact-btn" onClick={() => setIsMenuOpen(false)}>
             Fale Conosco
-          </Link>
+          </a>
         </div>
       </div>
     </header>

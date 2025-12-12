@@ -16,19 +16,19 @@ interface Service {
 
 const services: Service[] = [
   {
-    icon: faCode,
-    title: "Desenvolvimento Web",
-    description: "Criamos sites e aplicações web modernas e responsivas",
+    icon: faShoppingCart,
+    title: "E-commerce VTEX & Deco.cx",
+    description: "Lojas de alta performance com integração completa, checkout otimizado e arquitetura escalável para o crescimento do seu negócio.",
   },
   {
-    icon: faShoppingCart,
-    title: "E-commerce",
-    description: "Implementamos soluções completas de comércio eletrônico",
+    icon: faCode,
+    title: "Desenvolvimento Personalizado",
+    description: "Sistemas, sites e aplicações web sob medida, com foco em código organizado, segurança, velocidade e escala.",
   },
   {
     icon: faChartLine,
-    title: "Marketing Digital",
-    description: "Estratégias para aumentar sua presença online",
+    title: "Otimização & Performance",
+    description: "Melhoria de velocidade, SEO técnico, análise de métricas e otimizações que impactam diretamente na experiência e nos resultados.",
   },
 ];
 
@@ -36,7 +36,16 @@ const Services: React.FC = () => {
   return (
     <section id="servicos" className="services">
       <div className="container">
-        <h2>Nossos Serviços</h2>
+        <div className="services-header">
+          <span className="section-badge">Nossos Serviços</span>
+          <h2>
+            O que a <span className="highlight">ADF Soluções Digital</span> entrega<br />
+            para o seu negócio
+          </h2>
+          <p className="section-subtitle">
+            Serviços especializados em desenvolvimento web, e‑commerce, interfaces e performance para o seu projeto digital.
+          </p>
+        </div>
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="service-card">

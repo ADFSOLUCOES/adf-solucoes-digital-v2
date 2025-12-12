@@ -8,6 +8,7 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import "../styles/components/Footer.scss";
+import "../styles/components/Footer.scss";
 
 const Footer = () => {
   return (
@@ -16,40 +17,46 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-info">
             <Link to="/" className="footer-logo">
-              <img src="/images/logo.png" alt="ADF Soluções" />
+              <img src="/images/logo.png" alt="adfsolucoesdigital" />
             </Link>
             <p className="footer-description">
-              Transformando negócios através de soluções digitais inovadoras.
-              Especialistas em desenvolvimento de e-commerce de alto impacto.
+              Desenvolvemos soluções digitais sob medida para empresas que precisam de sites, e‑commerce, interfaces e sistemas de alta performance.
             </p>
-            <div className="footer-social">
+            <p className="footer-tagline">
+              Tecnologia, clareza e eficiência para transformar projetos em realidade.
+            </p>
+            <div className="footer-social" role="list">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visite nossa página no Facebook"
               >
-                <FontAwesomeIcon icon={faFacebookF} />
+                <FontAwesomeIcon icon={faFacebookF} aria-hidden="true" />
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visite nosso perfil no LinkedIn"
               >
-                <FontAwesomeIcon icon={faLinkedinIn} />
+                <FontAwesomeIcon icon={faLinkedinIn} aria-hidden="true" />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Siga-nos no Instagram"
               >
-                <FontAwesomeIcon icon={faInstagram} />
+                <FontAwesomeIcon icon={faInstagram} aria-hidden="true" />
               </a>
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Veja nossos projetos no GitHub"
               >
-                <FontAwesomeIcon icon={faGithub} />
+                <FontAwesomeIcon icon={faGithub} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -57,32 +64,27 @@ const Footer = () => {
           <nav className="footer-nav">
             <ul>
               <li>
-                <Link to="/servicos">Serviços</Link>
+                <a href="#servicos">Serviços</a>
               </li>
               <li>
-                <Link to="/tecnologias">Tecnologias</Link>
+                <a href="#tecnologias">Tecnologias</a>
               </li>
               <li>
-                <Link to="/sobre">Sobre</Link>
-              </li>
-              <li>
-                <Link to="/cases">Cases</Link>
-              </li>
-              <li>
-                <Link to="/contato">Contato</Link>
+                <a href="#contact">Contato</a>
               </li>
             </ul>
           </nav>
 
           <div className="footer-contact">
-            <a href="mailto:contato@adfsolucoes.com">contato@adfsolucoes.com</a>
+            <a href="mailto:contato@adfsolucoesdigital.com">contato@adfsolucoesdigital.com</a>
             <a href="tel:+551199999999">+55 (11) 9999-9999</a>
             <p>São Paulo, SP</p>
+            <p className="footer-hours">seg a sex, 9h às 18h</p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© 2025 ADF Soluções. Todos os direitos reservados.</p>
+          <p>© 2025 adfsolucoesdigital. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
