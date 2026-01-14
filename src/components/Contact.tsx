@@ -83,23 +83,72 @@ const Contact: React.FC = () => {
     setSubmitStatus(null);
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("email", formData.email);
-      formDataToSend.append("phone", formData.phone);
-      formDataToSend.append("company", formData.company || "");
-      formDataToSend.append("message", formData.message);
+      // Detecta automaticamente a URL da API baseado no ambiente
+      const getApiUrl = () => {
+        // Se houver variável de ambiente definida, usa ela (prioridade máxima)
+        if (import.meta.env.VITE_API_URL) {
+          return import.meta.env.VITE_API_URL;
+        }
+        
+        // Em produção, tenta diferentes configurações possíveis
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+          const hostname = window.location.hostname;
+          const protocol = window.location.protocol;
+          
+          // Tenta subdomínio api primeiro (mais comum em produção)
+          // Se não funcionar, o frontend pode tentar a porta 3001
+          return `${protocol}//api.${hostname}`;
+        }
+        
+        // Em desenvolvimento, usa localhost
+        return "http://localhost:3001";
+      };
+      
+      const apiUrl = getApiUrl();
+      
+      // Lista de URLs para tentar (fallback)
+      const apiUrls = [apiUrl];
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        // Adiciona fallback para porta 3001 se subdomínio não funcionar
+        const hostname = window.location.hostname;
+        const protocol = window.location.protocol;
+        if (!apiUrl.includes(':3001')) {
+          apiUrls.push(`${protocol}//${hostname}:3001`);
+        }
+      }
+      
+      let lastError: Error | null = null;
+      let response: Response | null = null;
+      
+      // Tenta cada URL até uma funcionar
+      for (const url of apiUrls) {
+        try {
+          response = await fetch(`${url}/send-email`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              company: formData.company || "",
+              message: formData.message,
+            }),
+          });
 
-      const response = await fetch("https://formspree.io/f/mblblvwl", {
-        method: "POST",
-        body: formDataToSend,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+          if (response.ok) {
+            break; // Sucesso, para de tentar
+          }
+        } catch (error) {
+          lastError = error as Error;
+          continue; // Tenta próxima URL
+        }
+      }
 
-      if (!response.ok) {
-        throw new Error("Erro ao enviar mensagem");
+      if (!response || !response.ok) {
+        throw lastError || new Error("Erro ao enviar mensagem");
       }
 
       setSubmitStatus("success");
@@ -157,7 +206,7 @@ const Contact: React.FC = () => {
               </div>
               <div className="text">
                 <h4>Email</h4>
-                <p>contato@adfsolucoesdigital.com</p>
+                <p>contato@adfsolucoesdigital.com.br</p>
               </div>
             </div>
             <div className="info-item">

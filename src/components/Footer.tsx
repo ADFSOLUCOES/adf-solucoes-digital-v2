@@ -74,8 +74,8 @@ const Footer = () => {
           </nav>
 
           <div className="footer-contact">
-            <a href="mailto:contato@adfsolucoesdigital.com">
-              contato@adfsolucoesdigital.com
+            <a href="mailto:contato@adfsolucoesdigital.com.br">
+              contato@adfsolucoesdigital.com.br
             </a>
             <a href="tel:+5511945239024">+55 (11) 94523-9024</a>
             <p>São Paulo, SP</p>
