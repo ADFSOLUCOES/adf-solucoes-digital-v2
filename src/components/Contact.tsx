@@ -136,11 +136,6 @@ const Contact: React.FC = () => {
         <div className="contact-content">
           <span className="section-badge">Contato</span>
           <h2>Pronto para Desenvolver Seu Projeto Digital?</h2>
-          <p className="contact-subtitle">
-            Solicite um <strong>orçamento gratuito</strong> e sem compromisso. 
-            Respondemos em até <strong>24 horas</strong> para entender sua necessidade — 
-            seja site, sistema, e‑commerce, interface ou otimização de performance.
-          </p>
           <div className="contact-benefits">
             <div className="benefit-item">
               <FontAwesomeIcon icon={faCheck} />
@@ -171,7 +166,7 @@ const Contact: React.FC = () => {
               </div>
               <div className="text">
                 <h4>Telefone</h4>
-                <p>(11) 99999-9999</p>
+                <p>(11) 94523-9024</p>
               </div>
             </div>
             <div className="info-item">
@@ -311,7 +306,11 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="form-submit">
-            <button type="submit" disabled={isSubmitting} className="submit-btn">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="submit-btn"
+            >
               {isSubmitting ? (
                 <>
                   <FontAwesomeIcon icon={faSpinner} className="fa-spin" />

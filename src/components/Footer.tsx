@@ -20,14 +20,17 @@ const Footer = () => {
               <img src="/images/logo.png" alt="adfsolucoesdigital" />
             </Link>
             <p className="footer-description">
-              Desenvolvemos soluções digitais sob medida para empresas que precisam de sites, e‑commerce, interfaces e sistemas de alta performance.
+              Desenvolvemos soluções digitais sob medida para empresas que
+              precisam de sites, e‑commerce, interfaces e sistemas de alta
+              performance.
             </p>
             <p className="footer-tagline">
-              Tecnologia, clareza e eficiência para transformar projetos em realidade.
+              Tecnologia, clareza e eficiência para transformar projetos em
+              realidade.
             </p>
             <div className="footer-social" role="list">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/adfsolucaodigital"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visite nossa página no Facebook"
@@ -35,7 +38,7 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faFacebookF} aria-hidden="true" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/adfsolucoesdigital/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visite nosso perfil no LinkedIn"
@@ -43,20 +46,12 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faLinkedinIn} aria-hidden="true" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/adfsolucoesdigital/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Siga-nos no Instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} aria-hidden="true" />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Veja nossos projetos no GitHub"
-              >
-                <FontAwesomeIcon icon={faGithub} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -72,19 +67,24 @@ const Footer = () => {
               <li>
                 <a href="#contact">Contato</a>
               </li>
+              <li>
+                <a href="#">Carreiras</a>
+              </li>
             </ul>
           </nav>
 
           <div className="footer-contact">
-            <a href="mailto:contato@adfsolucoesdigital.com">contato@adfsolucoesdigital.com</a>
-            <a href="tel:+551199999999">+55 (11) 9999-9999</a>
+            <a href="mailto:contato@adfsolucoesdigital.com">
+              contato@adfsolucoesdigital.com
+            </a>
+            <a href="tel:+5511945239024">+55 (11) 94523-9024</a>
             <p>São Paulo, SP</p>
             <p className="footer-hours">seg a sex, 9h às 18h</p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© 2025 adfsolucoesdigital. Todos os direitos reservados.</p>
+          <p>© 2026 adfsolucoesdigital. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
