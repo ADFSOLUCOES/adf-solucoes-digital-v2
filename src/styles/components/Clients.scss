@@ -1,0 +1,187 @@
+@use "../main" as *;
+
+.clients {
+  padding: 6rem 0;
+  background: $bg-light;
+  position: relative;
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .clients-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: rgba($primary-color, 0.08);
+      color: $primary-color;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 3.25rem;
+      color: $text-dark;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+
+      .highlight {
+        color: $primary-color;
+      }
+
+      @media (max-width: $tablet) {
+        font-size: 2.5rem;
+        line-height: 1.3;
+      }
+
+      @media (max-width: $mobile) {
+        font-size: 2rem;
+      }
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: rgba($text-dark, 0.75);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .client-item {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 2.5 / 1;
+    height: auto;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    background: $bg-light;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba($text-dark, 0.08);
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: $tablet) {
+      max-width: 100%;
+      padding: 1.25rem 1.5rem;
+      min-height: 70px;
+    }
+
+    @media (max-width: $mobile) {
+      padding: 1rem 1.25rem;
+      min-height: 60px;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-color: rgba($primary-color, 0.2);
+
+      img {
+        filter: grayscale(0%) brightness(0.2);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    .client-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .client-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(0.3);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .client-name-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba($text-dark, 0.7);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    &:hover .client-name-fallback {
+      color: $primary-color;
+    }
+  }
+}
+
+// Efeito de fundo sutil (opcional)
+.clients::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba($primary-color, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}

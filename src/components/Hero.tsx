@@ -28,13 +28,13 @@ const Hero: React.FC = () => {
       <div className="hero-container">
         <div className={`hero-content ${isVisible ? "visible" : ""}`}>
           <div className="hero-badge">
-            <span>🚀 Especializado em E‑commerce & Soluções Web Sob Medida</span>
+            <span>🚀 Especializado em E‑commerce</span>
           </div>
           <h1>
-            Soluções Web e E‑commerce de Alta Performance para o Seu Negócio
+            Soluções Web e E‑commerce de Alta Performance para Empresas que Precisam Ir Além
           </h1>
           <p className="hero-subtitle">
-            Desenvolvemos e‑commerces, sites e sistemas sob medida, com foco em velocidade, estabilidade e experiência do usuário. Especializados em VTEX, Deco.cx e desenvolvimento web moderno, ajudamos sua empresa a construir uma presença digital sólida, eficiente e pronta para crescer.
+            Desenvolvemos e‑commerces, sites e sistemas sob medida com foco em velocidade, performance e experiência do usuário. Atuamos com VTEX, Deco.cx e desenvolvimento web moderno para criar soluções estáveis, bem planejadas e prontas para crescer. Construímos uma presença digital sólida, eficiente e alinhada às necessidades do seu negócio.
           </p>
           <div className="hero-features">
             <div className="feature">

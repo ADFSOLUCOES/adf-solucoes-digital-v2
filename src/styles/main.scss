@@ -1,20 +1,21 @@
 @use "sass:color";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-// Cores
-$bg-dark: #070d18;
-$bg-light: #fff;
-$bg-gray: #f5f5f5;
-$bg-section-sobre: #070d18;
-$bg-neutral: #ccc;
+// Cores - Estilo Wicomm
+$bg-dark: #1a1a1a;
+$bg-light: #ffffff;
+$bg-gray: #f8f9fa;
+$bg-section-sobre: #1a1a1a;
+$bg-neutral: #e5e5e5;
 
 $text-dark: #1a1a1a;
-$text-light: #fff;
+$text-light: #ffffff;
 
-$primary-color: #00879f;
-$primary-hover: color.adjust($primary-color, $lightness: -5%);
+// Cor primária - Cor correta do logo ADF
+$primary-color: #0489A1;
+$primary-hover: color.adjust($primary-color, $lightness: -10%);
 
-// Fontes
+// Fontes - Inter (mantendo, similar à Wicomm)
 $font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
   Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 $font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -47,31 +48,58 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
+  
+  @media (max-width: $tablet) {
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: $mobile) {
+    padding: 0 1rem;
+  }
 }
 
-// Buttons
+// Buttons - Estilo Wicomm
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   border-radius: 8px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
   outline: none;
+  letter-spacing: 0.01em;
 
   &-primary {
     background: $primary-color;
     color: $text-light;
+    box-shadow: 0 2px 8px rgba($primary-color, 0.2);
 
     &:hover {
-      background: color.adjust($primary-color, $lightness: -5%);
+      background: $primary-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &-secondary {
+    background: transparent;
+    color: $primary-color;
+    border: 2px solid $primary-color;
+    
+    &:hover {
+      background: rgba($primary-color, 0.05);
       transform: translateY(-2px);
     }
   }

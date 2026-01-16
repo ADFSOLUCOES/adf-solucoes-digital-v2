@@ -1,21 +1,25 @@
 @use "../main" as *;
 
 .footer {
-  background: $bg-dark;
+  background: #1a1a1a;
   color: $text-light;
-  padding: 4rem 0 2rem;
+  padding: 5rem 0 2rem;
 
   &-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
+    
+    @media (max-width: $tablet) {
+      padding: 0 1.5rem;
+    }
   }
 
   &-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
+    gap: 5rem;
+    margin-bottom: 4rem;
 
     @media (max-width: $tablet) {
       grid-template-columns: 1fr 1fr;
@@ -24,7 +28,7 @@
 
     @media (max-width: $mobile) {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
   }
 
@@ -41,17 +45,17 @@
 
     .footer-description {
       font-size: 1rem;
-      line-height: 1.6;
-      color: rgba($text-light, 0.8);
-      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: rgba($text-light, 0.75);
+      margin-bottom: 1.25rem;
     }
 
     .footer-tagline {
       font-size: 0.95rem;
-      line-height: 1.6;
-      color: rgba($text-light, 0.7);
+      line-height: 1.7;
+      color: rgba($text-light, 0.65);
       font-style: italic;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
   }
 
@@ -60,10 +64,10 @@
     gap: 1rem;
 
     a {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba($text-light, 0.1);
+      background: rgba($text-light, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -73,6 +77,7 @@
       &:hover {
         background: $primary-color;
         transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba($primary-color, 0.3);
       }
     }
   }
@@ -87,10 +92,11 @@
         margin-bottom: 1rem;
 
         a {
-          color: rgba($text-light, 0.8);
+          color: rgba($text-light, 0.75);
           text-decoration: none;
           transition: all 0.3s ease;
           font-size: 1rem;
+          font-weight: 400;
 
           &:hover {
             color: $primary-color;
@@ -107,10 +113,11 @@
 
     a,
     p {
-      color: rgba($text-light, 0.8);
+      color: rgba($text-light, 0.75);
       text-decoration: none;
       transition: all 0.3s ease;
       font-size: 1rem;
+      font-weight: 400;
 
       &:hover {
         color: $primary-color;
@@ -125,13 +132,14 @@
   }
 
   &-bottom {
-    padding-top: 2rem;
+    padding-top: 2.5rem;
     border-top: 1px solid rgba($text-light, 0.1);
     text-align: center;
 
     p {
       color: rgba($text-light, 0.6);
       font-size: 0.875rem;
+      font-weight: 400;
     }
   }
 }

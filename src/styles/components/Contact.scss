@@ -2,22 +2,22 @@
 @use "../main" as *;
 
 .contact {
-  padding: 4rem 0;
+  padding: 8rem 0;
   background-color: $bg-gray;
 
   @media (max-width: $mobile) {
-    padding: 2rem 0;
+    padding: 4rem 0;
   }
 
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: start;
 
     @media (max-width: $tablet) {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 3rem;
     }
 
     @media (max-width: $mobile) {
@@ -28,24 +28,28 @@
   .contact-content {
     .section-badge {
       display: inline-block;
-      padding: 0.5rem 1rem;
-      background: rgba($primary-color, 0.1);
+      padding: 0.5rem 1.25rem;
+      background: rgba($primary-color, 0.08);
       color: $primary-color;
-      border-radius: 20px;
+      border-radius: 25px;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: $text-dark;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
 
       @media (max-width: $mobile) {
         font-size: 2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         text-align: left;
       }
     }
@@ -77,16 +81,16 @@
       .benefit-item {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        background: rgba($primary-color, 0.1);
+        gap: 0.625rem;
+        padding: 0.75rem 1.25rem;
+        background: rgba($primary-color, 0.08);
         border-radius: 8px;
         font-size: 0.9rem;
         font-weight: 600;
         color: $primary-color;
 
         svg {
-          font-size: 0.85rem;
+          font-size: 0.875rem;
         }
       }
     }
@@ -185,12 +189,12 @@
 
   .contact-form {
     background: $bg-light;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 
     @media (max-width: $mobile) {
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: 12px;
     }
 
@@ -205,24 +209,25 @@
       input,
       textarea {
         width: 100%;
-        padding: 1rem;
-        border: 2px solid rgba($text-dark, 0.1);
-        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        border: 1px solid rgba($text-dark, 0.12);
+        border-radius: 10px;
         font-size: 1rem;
         color: $text-dark;
         background: $bg-light;
         transition: all 0.3s ease;
+        font-family: $font-primary;
 
         @media (max-width: $mobile) {
-          padding: 0.75rem;
+          padding: 0.875rem 1rem;
           font-size: 0.95rem;
-          border-radius: 10px;
+          border-radius: 8px;
         }
 
         &:focus {
           outline: none;
           border-color: $primary-color;
-          box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+          box-shadow: 0 0 0 3px rgba($primary-color, 0.08);
         }
 
         &::placeholder {
@@ -323,7 +328,7 @@
         color: $text-light;
         border: none;
         padding: 1rem 2rem;
-        border-radius: 12px;
+        border-radius: 10px;
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
@@ -333,7 +338,7 @@
         gap: 0.75rem;
         width: 100%;
         justify-content: center;
-        box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+        box-shadow: 0 2px 8px rgba($primary-color, 0.2);
 
         @media (max-width: $mobile) {
           padding: 0.875rem 1.5rem;
@@ -355,9 +360,9 @@
         }
 
         &:hover:not(:disabled) {
-          background: color.adjust($primary-color, $lightness: -5%);
+          background: $primary-hover;
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba($primary-color, 0.4);
+          box-shadow: 0 4px 12px rgba($primary-color, 0.3);
 
           svg:not(.fa-spin) {
             transform: translateX(4px);

@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import Clients from "./components/Clients";
 import Technologies from "./components/Technologies";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -24,6 +25,7 @@ const App: React.FC = () => {
             <Hero />
             {/* <Stats /> */}
             <Services />
+            <Clients />
             {/* <Technologies /> */}
             {/* <Cases /> */}
             {/* <Testimonials /> */}

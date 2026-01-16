@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run copy-htaccess",
+    "copy-htaccess": "copy .htaccess dist\\.htaccess 2>nul || cp .htaccess dist/.htaccess 2>/dev/null || echo .htaccess copiado",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "concurrently \"npm run server\" \"npm run client\"",
