@@ -7,5 +7,7 @@ deployment:
     - npm install --production=false
     - npm run build
     - /bin/cp -R dist/* $DEPLOYPATH
+    - /bin/cp dist/.htaccess $DEPLOYPATH 2>/dev/null || /bin/cp .htaccess $DEPLOYPATH 2>/dev/null || echo ".htaccess não encontrado"
     - /bin/rm -rf node_modules dist src server public .git .gitignore package.json package-lock.json tsconfig.json tsconfig.app.json tsconfig.node.json vite.config.ts vite.config.js eslint.config.js README.md .cpanel.yml
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess 2>/dev/null || echo "Ajustando permissões"
 
