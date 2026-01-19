@@ -1,8 +1,8 @@
 {
   "name": "adf-solucoes",
   "private": true,
-  "version": "1.0.0",
-  "description": "Site da ADF Soluções Digital",
+  "version": "1.0.1",
+  "description": "Site da ADF Soluções Digital - Teste de sincronização 18/01/2026",
   "type": "module",
   "scripts": {
     "dev": "vite",
